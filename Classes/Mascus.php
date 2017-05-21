@@ -2,17 +2,11 @@
 
 class Mascus {
 public $page;
-public $test_array = array ();
-public $single_ad_data = array();
-public $full_ad_data =array();
+public $test_array, $single_ad_data, $full_ad_data =array();
 
 public function __construct (array $test_array) {
 	$this->test_array = $test_array;
-	$this->single_ad_data = $single_ad_data;
-	$this->full_ad_data = $full_ad_data;
 	$this->page = $page=new DOMDocument;
-	echo "CLASS MASCUS INSTANTIATED...";
-
 }
 
 
@@ -32,9 +26,9 @@ public function fetch_ad_data() {
 
 		// GET ROWS (TAG <tr>)  FROM MAIN TABLE
 		$tableDomElementsArray=$xpath->query('//*[@id="product-card"]/div/div[3]/div[1]/div[4]/span/div/table/tr');
-		echo "<pre>";
-		print_r($tableDomElementsArray);
-		echo "</pre></br>";
+		//echo "<pre>";
+		//print_r($tableDomElementsArray);
+		//echo "</pre></br>";
 
 		// DEFINE ELEMENTS TO GET FROM TABLE ( correlating to nodeValue )
 		$adElementsMascus =array
@@ -48,12 +42,12 @@ public function fetch_ad_data() {
 
 		// GET EVERY ROWS NODE VALUE COMPARE IF IT CONTAINS WANTED ELEMENT AND GET VALUE
 		foreach ($tableDomElementsArray as $tableDomRow) {
-			echo "<pre>";
+			//echo "<pre>";
 			
 				foreach ($adElementsMascus as $adm) {
 					if (strpos($tableDomRow->nodeValue, $adm) !==false) {
 
-						echo $adm.": ".str_replace($adm, '', $tableDomRow->nodeValue)."</br>";
+						//echo $adm.": ".str_replace($adm, '', $tableDomRow->nodeValue)."</br>";
 						$this->single_ad_data[$adm] = str_replace($adm, '', $tableDomRow->nodeValue);  
 					}
 				}
@@ -62,7 +56,7 @@ public function fetch_ad_data() {
 		}
 		// GET SELLER DATA
 		$sellerName=$xpath->query('//div[@class="company-name"]');
-		echo "Seller name: ".$sellerName[0]->nodeValue;  // COUNTING STARTS FROM ZERRROOO!!!!
+		//echo "Seller name: ".$sellerName[0]->nodeValue;  // COUNTING STARTS FROM ZERRROOO!!!!
 		$this->single_ad_data['seller name'] = $sellerName[0]->nodeValue; 
 
 		$this->full_ad_data[] = $this->single_ad_data;
@@ -75,7 +69,7 @@ public function fetch_ad_data() {
 		//}
 
 
-		echo "</pre></br>";
+		//echo "</pre></br>";
 
 	} 
 }

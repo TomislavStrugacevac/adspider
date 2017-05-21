@@ -9,7 +9,7 @@ class StartUrlGenerator {
 	}
 
 	public function generate_urls() {
-		echo "StartUrlGenerator->generate_urls:: IN PROGRESS...</br>";
+		//echo "StartUrlGenerator->generate_urls:: IN PROGRESS...</br>";
 		$x=1;
 		$base_url='';
 		$full_url_array = array();
@@ -27,7 +27,7 @@ class StartUrlGenerator {
 		for ($p=1; $p<=$this->pages; $p++) {
 			$full_url_array[]= "http://www.njuskalo.hr/index.php?ctl=search_ads&keywords=".$base_url."&page=".$p;
 		}
-
+		
 		//generate Mascus
 		for ($p=1; $p<=$this->pages; $p++) {
 			$full_url_array[]= "https://www.mascus.hr/".$base_url."/auctions%3d1/+/".$p.",100,yearofmanufacture_desc,search.html?currency=EUR";
@@ -38,7 +38,7 @@ class StartUrlGenerator {
 			$full_url_array[]= "https://www.olx.ba/pretraga?trazilica=".$base_url."&stranica=".$p;
 
 		}
-
+		/**
 		//generate Autoline
 		for ($p=1; $p<=$this->pages; $p++) {
 			$full_url_array[]= "https://autoline.hr/search_text.php?query=".$base_url."&page=".$p;
@@ -50,11 +50,8 @@ class StartUrlGenerator {
 			$base_url_24=str_replace("+", "%20", $base_url);
 			$full_url_array[]= "http://ww2.truckscout24.com/catalog/search/".$base_url_24."\"/filter/page/".$p."/100";
 
-		}
-
+		} **/
 		
-		
-		echo "StartUrlGenerator->generate_urls:: COMPLETED.</br>";
 		return $full_url_array;
 
 	}

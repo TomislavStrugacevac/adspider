@@ -14,7 +14,7 @@ class DetailedUrlGenerator {
 
 	public function __construct (StartUrlGenerator $start_url) {
 		$this->page = new DOMDocument();
-		echo "DetailedUrlGenerator->__construct:: IN PROGRESS...</br>";
+		//echo "DetailedUrlGenerator->__construct:: IN PROGRESS...</br>";
 
 		foreach ($start_url->generate_urls() as $url) {
 			$page = new DOMDocument();
@@ -48,14 +48,14 @@ class DetailedUrlGenerator {
 						$this->autoline_links_array[]= $page_link;
 					} elseif (strpos($url, "truckscout24")) {
 						$this->truckscout24_links_array[]="http://ww2.truckscout24.com".$page_link;
-					}
+					} 
 					
 				}
 			}
 
 
 		}
-	echo "DetailedUrlGenerator->__construct:: COMPLETED.</br>";
+	//echo "DetailedUrlGenerator->__construct:: COMPLETED.</br>";
 
 	}
 
